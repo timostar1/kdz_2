@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace kdz
+namespace kdz.Model
 {
-    class CSVProcessor
+    class Autodiller
     {
+        private List<Car> _cars;
     }
 }

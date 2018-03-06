@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kdz", "kdz\kdz.csproj", "{19E8B20D-0249-42EE-A976-2948F4C4789E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kdz_2", "kdz_2\kdz_2.csproj", "{916260A6-ED1F-4B07-B772-7121E83916F1}"
 EndProject
 Global
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19E8B20D-0249-42EE-A976-2948F4C4789E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E8B20D-0249-42EE-A976-2948F4C4789E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E8B20D-0249-42EE-A976-2948F4C4789E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E8B20D-0249-42EE-A976-2948F4C4789E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{916260A6-ED1F-4B07-B772-7121E83916F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{916260A6-ED1F-4B07-B772-7121E83916F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{916260A6-ED1F-4B07-B772-7121E83916F1}.Release|Any CPU.ActiveCfg = Release|Any CPU

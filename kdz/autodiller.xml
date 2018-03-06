@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Autodiller</name>
+    </assembly>
+    <members>
+        <member name="T:kdz.Autodiller">
+            <summary>
+            Это класс, позволяющий выполнять операции 
+            над коллекцией данных об автомобилях
+            </summary>
+        </member>
+    </members>
+</doc>
