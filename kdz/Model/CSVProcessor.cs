@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using System.Globalization;
 
 namespace kdz.Model
 {
@@ -51,7 +52,7 @@ namespace kdz.Model
                     string line = reader.ReadLine();
                     List<string> values = line.Split(',').ToList();
                     record = new T();
-                    record.SetFromList<string>(values);
+                    record.SetFromStringList(values, CultureInfo.GetCultureInfo("en-US"));
                     yield return record;
                 }
             }

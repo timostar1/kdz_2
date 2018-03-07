@@ -8,6 +8,7 @@ using kdz.Model;
 using CsvHelper;
 using System.IO;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace kdz_2
 {
@@ -94,8 +95,14 @@ namespace kdz_2
                 //Console.WriteLine(r.GetRecords);
             }
             //TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
-            CarAttribute<double> attr = new CarAttribute<double>("13", -1.0, 15.0);
+            CarAttribute<double> attr = new CarAttribute<double>(-1.0, 15.0, "1,9");
+            Car car = new Car();
+            string str = "\"Mazda RX4\",21,6,160,110,3.9,2.62,16.46,0,1,4,4";
+            List<string> l = str.Split(',').ToList<string>();
+
             //Console.WriteLine("13".T)
+            car.SetFromStringList(l, CultureInfo.GetCultureInfo("en-US"));
+            Console.WriteLine(car);
             Console.WriteLine(attr);
         }
     }

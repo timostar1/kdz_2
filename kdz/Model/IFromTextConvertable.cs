@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace kdz.Model
         /// Преобразует текст к нужному значению
         /// </summary>
         /// <param name="text">текстовые данные</param>
-        void ConvertFromText(string text);
+        /// <param name="cultureInfo">Информация о языке</param>
+        void ConvertFromText(string text, CultureInfo cultureInfo);
     }
 }

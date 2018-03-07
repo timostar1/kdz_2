@@ -67,7 +67,7 @@ namespace kdz.Model
         /// <param name="text">Данные в текстовой форме</param>
         /// <param name="minValue">Минимальное допустимое значение (будет включено)</param>
         /// <param name="maxValue">Максимальное допустимое значение (будет включено)</param>
-        public CarAttribute(string text, T minValue, T maxValue)
+        public CarAttribute(T minValue, T maxValue, string text = "")
         {
             this._permissibleValues = new RangeOfPermissibleValues<T>(minValue, maxValue);
             T value = new T();
@@ -79,7 +79,7 @@ namespace kdz.Model
         /// </summary>
         /// <param name="text">Данные в текстовой форме</param>
         /// <param name="permissibleValues">Список допустимых значений</param>
-        public CarAttribute(string text, List<T> permissibleValues)
+        public CarAttribute(List<T> permissibleValues, string text="")
         {
             this._permissibleValues = new RangeOfPermissibleValues<T>(permissibleValues);
             T value = new T();
@@ -137,13 +137,15 @@ namespace kdz.Model
         /// устанавливает свойства Valid, Correct, Value
         /// </summary>
         /// <param name="text">текстовые данные</param>
-        public void ConvertFromText(string text)
+        /// <param name="cultureInfo">Информация о языке</param>
+        public void ConvertFromText(string text, CultureInfo cultureInfo=null)
         {
             text = text.Trim('"', ' ');
+            text = text.Replace('.', ',');
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
             try
             {
-                this._value = (T)converter.ConvertFromString(text);
+                this._value = (T)converter.ConvertFromString(null, cultureInfo, text);
                 this._valid = true;
                 this._correct = Valid && IsCorrect(Value);
             }
