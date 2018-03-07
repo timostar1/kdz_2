@@ -58,9 +58,7 @@ namespace kdz.Model
         {
             this._permissibleValues = permissibleValues;
             T value = new T();
-            this._valid = ConvertFromText(text, out value);
-            this._value = value;
-            this._correct = this.Valid && IsCorrect(value);
+            ConvertFromText(text);
         }
 
         /// <summary>
@@ -73,9 +71,7 @@ namespace kdz.Model
         {
             this._permissibleValues = new RangeOfPermissibleValues<T>(minValue, maxValue);
             T value = new T();
-            this._valid = ConvertFromText(text, out value);
-            this._value = value;
-            this._correct = this.Valid && IsCorrect(value);
+            ConvertFromText(text);
         }
 
         /// <summary>
@@ -87,9 +83,7 @@ namespace kdz.Model
         {
             this._permissibleValues = new RangeOfPermissibleValues<T>(permissibleValues);
             T value = new T();
-            this._valid = ConvertFromText(text, out value);
-            this._value = value;
-            this._correct = this.Valid && IsCorrect(value);
+            ConvertFromText(text);
         }
 
         /// <summary>
@@ -139,24 +133,25 @@ namespace kdz.Model
         }
 
         /// <summary>
-        /// Метод, преобразующий текстовые данные к типу T
+        /// Преобразует текст к нужному значению,
+        /// устанавливает свойства Valid, Correct, Value
         /// </summary>
-        /// <param name="text">Текстовые данные</param>
-        /// <param name="result">Данные в требуемом формате</param>
-        /// <returns>Статус операции</returns>
-        public bool ConvertFromText(string text, out T result)
+        /// <param name="text">текстовые данные</param>
+        public void ConvertFromText(string text)
         {
             text = text.Trim('"', ' ');
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
             try
             {
-                result = (T)converter.ConvertFromString(text);
-                return true;
+                this._value = (T)converter.ConvertFromString(text);
+                this._valid = true;
+                this._correct = Valid && IsCorrect(Value);
             }
             catch
             {
-                result = new T();
-                return false;
+                this._value = new T();
+                this._valid = false;
+                this._correct = false;
             }
         }
     }

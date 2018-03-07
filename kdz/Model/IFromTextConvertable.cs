@@ -18,11 +18,9 @@ namespace kdz.Model
         bool Valid { get; }
 
         /// <summary>
-        /// Метод, преобразующий текстовые данные к типу T
+        /// Преобразует текст к нужному значению
         /// </summary>
-        /// <param name="text">Текстовые данные</param>
-        /// <param name="result">Данные в требуемом формате</param>
-        /// <returns>Статус операции</returns>
-        bool ConvertFromText(string text, out T result);
+        /// <param name="text">текстовые данные</param>
+        void ConvertFromText(string text);
     }
 }
