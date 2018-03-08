@@ -11,13 +11,18 @@ namespace kdz.Model
     public class Car: IFromCSVReadable
     {
         /// <summary>
+        /// Информация о языке
+        /// </summary>
+        private CultureInfo cultureInfo;
+
+        /// <summary>
         /// Модель автомобиля
         /// </summary>
         private string _model;
         /// <summary>
         /// Свойство модели
         /// </summary>
-        public string Model { get => this._model; }
+        public string Model { get => this._model; set => _model = value; }
 
         /// <summary>
         /// Miles per (US) gallon
@@ -26,7 +31,12 @@ namespace kdz.Model
         /// <summary>
         /// Miles per (US) gallon property
         /// </summary>
-        public CarAttribute<double> Mpg { get => this._mpg; }
+        //public CarAttribute<double> Mpg { get => this._mpg; }
+        public string Mpg
+        {
+            get { return this._mpg.ToString(); }
+            set { this._mpg.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Количество цилиндров
@@ -35,7 +45,11 @@ namespace kdz.Model
         /// <summary>
         /// Свойство количества цилиндров
         /// </summary>
-        public CarAttribute<int> Cyl { get => this._cyl; }
+        public string Cyl
+        {
+            get { return this._cyl.ToString(); }
+            set { this._cyl.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Объем цилиндра (кубические дюймы)
@@ -44,7 +58,11 @@ namespace kdz.Model
         /// <summary>
         /// Свойство объема цилиндра
         /// </summary>
-        public CarAttribute<double> Disp { get => this._disp; }
+        public string Disp
+        {
+            get { return this._disp.ToString(); }
+            set { this._disp.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Количество лошадиных сил
@@ -53,7 +71,11 @@ namespace kdz.Model
         /// <summary>
         /// Свойство количества лошадиных сил
         /// </summary>
-        public CarAttribute<double> Hp { get => this._hp; }
+        public string Hp
+        {
+            get { return this._hp.ToString(); }
+            set { this._hp.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Rear axle ratio
@@ -62,7 +84,11 @@ namespace kdz.Model
         /// <summary>
         /// Rear axle ratio property
         /// </summary>
-        public CarAttribute<double> Drat { get => this._drat; }
+        public string Drat
+        {
+            get { return this._drat.ToString(); }
+            set { this._drat.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Вес в тыс. фунтов
@@ -71,7 +97,11 @@ namespace kdz.Model
         /// <summary>
         /// Свойство веса
         /// </summary>
-        public CarAttribute<double> Wt { get => this._wt; }
+        public string Wt
+        {
+            get { return this._wt.ToString(); }
+            set { this._wt.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Время прохождения 1/4 мили
@@ -80,7 +110,11 @@ namespace kdz.Model
         /// <summary>
         /// Свойство времени прохождения 1/4 мили
         /// </summary>
-        public CarAttribute<double> Qsec { get => this._qsec; }
+        public string Qsec
+        {
+            get { return this._qsec.ToString(); }
+            set { this._qsec.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// V/S (read https://stackoverflow.com/questions/18617174/r-mtcars-dataset-meaning-of-vs-variable)
@@ -89,7 +123,11 @@ namespace kdz.Model
         /// <summary>
         /// V/S property
         /// </summary>
-        public CarAttribute<int> Vs { get => this._vs; }
+        public string Vs
+        {
+            get { return this._vs.ToString(); }
+            set { this._vs.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Трансмиссия
@@ -98,7 +136,11 @@ namespace kdz.Model
         /// <summary>
         /// Свойство трансмиссии (0 = automatic, 1 = manual)
         /// </summary>
-        public CarAttribute<int> Am { get => this._am; }
+        public string Am
+        {
+            get { return this._am.ToString(); }
+            set { this._am.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Количество передних передач
@@ -107,7 +149,11 @@ namespace kdz.Model
         /// <summary>
         /// Свойство количества передних передач
         /// </summary>
-        public CarAttribute<int> Gear { get => this._gear; }
+        public string Gear
+        {
+            get { return this._gear.ToString(); }
+            set { this._gear.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         /// Количество карбюраторов
@@ -116,14 +162,18 @@ namespace kdz.Model
         /// <summary>
         /// Свойство количества карбюраторов
         /// </summary>
-        public CarAttribute<int> Carb { get => this._carb; }
+        public string Carb
+        {
+            get { return this._carb.ToString(); }
+            set { this._carb.ConvertFromText(value, this.cultureInfo); }
+        }
 
         /// <summary>
         ///  Инициализирунт объект класса Car
         /// </summary>
         public Car()
         {
-            this._model = "";
+            this._model = "x";
             this._mpg = new CarAttribute<double>(0.1, 100.0);
             this._cyl = new CarAttribute<int>(1, 24);
             this._disp = new CarAttribute<double>(0.1, 1000.0);
@@ -144,6 +194,7 @@ namespace kdz.Model
         /// <param name="cultureInfo">Информация о языке</param>
         public void SetFromStringList(List<string> values, CultureInfo cultureInfo)
         {
+            this.cultureInfo = cultureInfo;
             this._model = values[0];
             this._mpg.ConvertFromText(values[1]);
             this._cyl.ConvertFromText(values[2]);
