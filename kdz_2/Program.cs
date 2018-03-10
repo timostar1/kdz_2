@@ -84,26 +84,20 @@ namespace kdz_2
             //{
             //    Console.WriteLine(str);
             //}
-            using (StreamReader reader = new StreamReader(path))
-            {
-                CsvReader r = new CsvReader(reader);
-                //while (r.Read())
-                //{
-                //    //var record = r.GetRecord<Car>();
-                //    Console.WriteLine(r.);
-                //}
-                //Console.WriteLine(r.GetRecords);
-            }
+            
             //TypeConverter converter = TypeDescriptor.GetConverter(typeof(int));
             CarAttribute<double> attr = new CarAttribute<double>(-1.0, 15.0, "1,9");
             Car car = new Car();
-            string str = "\"Mazda RX4\",21,6,160,110,3.9,2.62,16.46,0,1,4,4";
+            string str = "\"ccccccc RX4\",21,6,160,110,3.9,2.62,16.46,0,1,4,4";
             List<string> l = str.Split(',').ToList<string>();
 
             //Console.WriteLine("13".T)
             car.SetFromStringList(l, CultureInfo.GetCultureInfo("en-US"));
-            Console.WriteLine(car);
-            Console.WriteLine(attr);
+            List<Car> cars = new List<Car>();
+            cars.Add(car);
+            CSVProcessor processor = new CSVProcessor(@"C:\Users\Тимофей\Documents\!ТИМА\УНИВЕР\!ПРЕДМЕТЫ\Программирование\КДЗ_2\new1.csv");
+            bool r = processor.TrySaveRecords(cars);
+            Console.WriteLine(r);
         }
     }
 }

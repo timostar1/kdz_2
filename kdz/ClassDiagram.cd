@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="kdz.Error" Collapsed="true">
+    <Position X="3.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAAAAAACAAAACAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Error.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.JarvisErrorEventArgs" Collapsed="true">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Jarvis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.JarvisFilesEventArgs" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Jarvis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.Jarvis" Collapsed="true">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACABCAAQQAAAAAAAAEQAAAAAgAAgAAAABAAAA=</HashCode>
+      <FileName>Jarvis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.Program" Collapsed="true">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.View" Collapsed="true">
+    <Position X="10.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BiAIRoihACAcIEBgQgGVyAEDBAoAAgAAAiAQAAgIAAg=</HashCode>
+      <FileName>View.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.Model.Autodiller">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Model\Autodiller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.Model.Car" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEARAAEAAAQQAEAgIgSAAYAIIAAAAIkAiQCAEgQwA=</HashCode>
+      <FileName>Model\Car.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.228" Collapsed="true" />
+  </Class>
+  <Class Name="kdz.Model.CarAttribute&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACAAAAAAAgQEAAAAAAAAAAAAAAAAAAIgBQAIAAQ=</HashCode>
+      <FileName>Model\CarAttribute.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="kdz.Model.CSVProcessor" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Model\CSVProcessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.Model.RangeOfPermissibleValues&lt;T&gt;" Collapsed="true">
+    <Position X="1.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAACAAQAAAAAAAACA=</HashCode>
+      <FileName>Model\RangeOfPermissibleValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.Properties.Resources" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kdz.Properties.Settings" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="kdz.Model.IFromCSVReadable" Collapsed="true">
+    <Position X="3.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\IFromCSVReadable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="kdz.Model.IFromTextConvertable&lt;T&gt;" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQ=</HashCode>
+      <FileName>Model\IFromTextConvertable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="kdz.Model.IVerifiable&lt;T&gt;">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAIAAA=</HashCode>
+      <FileName>Model\IVerifiable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="kdz.JarvisErrorEventHandler" Collapsed="true">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Jarvis.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="kdz.JarvisFilesEventHandler" Collapsed="true">
+    <Position X="5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Jarvis.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="kdz.JarvisSimpleEventHandler" Collapsed="true">
+    <Position X="6.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Jarvis.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

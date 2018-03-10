@@ -12,12 +12,17 @@ namespace kdz
 {
     public partial class View : Form
     {
+        private Error error;
         public View()
         {
             InitializeComponent();
+
+
+            this.error = new Error();
             
-            openFileDialog.FileOk += OpenFileDialog_FileOk;
-            openFileDialog.Disposed += OpenFileDialog_Disposed;
+            this.openFileDialog.FileOk += OpenFileDialog_FileOk;
+            this.saveFileDialog.FileOk += SaveFileDialog_FileOk;
+
             
             // Новый файл
             this.newToolStripMenuItem.Click += NewToolStripMenuItem_Click;
@@ -43,13 +48,37 @@ namespace kdz
 
             Jarvis.NewFileCreated += Jarvis_NewFileCreated;
             Jarvis.CarAdded += Jarvis_CarAdded;
+            Jarvis.FileUploaded += Jarvis_FileUploaded;
+            Jarvis.Error += Jarvis_Error;
+            Jarvis.FileSaved += Jarvis_FileSaved;
         }
 
-        
+        private void Jarvis_FileSaved()
+        {
+            Text = "SAVED";
+        }
 
         // =============================================================================================
         // Обработчики событий КОНТРОЛЛЕРА
         // =============================================================================================
+        private void Jarvis_Error(object sender, JarvisErrorEventArgs e)
+        {
+            this.error.SetError(e.ErrorMessage);
+            this.error.Show(this);
+        }
+
+        private void Jarvis_FileUploaded(object sender, JarvisFilesEventArgs e)
+        {
+            // TODO
+            this.Text = e.FilePath;
+            this.dataGridView.Enabled = true;
+            this.carBindingSource.DataSource = Jarvis.Cars;
+            // Разрешаем сохранить файл как...
+            this.saveToolStripMenuItem.Enabled = true;
+            // Разрешаем добавлять строки в таблицу
+            this.addNewCarToolStripMenuItem.Enabled = true;
+        }
+
         private void Jarvis_NewFileCreated()
         {
             this.Text = "New";
@@ -59,6 +88,7 @@ namespace kdz
             this.saveAsToolStripMenuItem.Enabled = true;
             // Разрешаем добавлять строки в таблицу
             this.addNewCarToolStripMenuItem.Enabled = true;
+            this.saveToolStripMenuItem.Enabled = false;
         }
 
         private void Jarvis_CarAdded()
@@ -81,7 +111,7 @@ namespace kdz
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Jarvis.OnFileSaved();
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,14 +133,15 @@ namespace kdz
         // =============================================================================================
         // Обработчики событий ФАЙЛОВ
         // =============================================================================================
-        private void OpenFileDialog_Disposed(object sender, EventArgs e)
-        {
-            this.Name = "xxx";
-        }
-
         private void OpenFileDialog_FileOk(object sender, CancelEventArgs e)
         {
-            this.Text = openFileDialog.FileName;
+            Jarvis.OnFileUploaded(null, new JarvisFilesEventArgs(openFileDialog.FileName));
+        }
+
+        private void SaveFileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            string file = this.saveFileDialog.FileName;
+            // TODO
         }
 
         // =============================================================================================

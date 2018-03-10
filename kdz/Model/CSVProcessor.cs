@@ -15,16 +15,21 @@ namespace kdz.Model
     {
         private string _path;
         private string _headerParrern;
-        public CSVProcessor(string filePath, string headerPattern)
+        public CSVProcessor(string filePath, string headerPattern=null, bool isNew=true)
         {
-            if (File.Exists(filePath))
+            if (File.Exists(filePath) & !isNew & headerPattern != null)
+            {
+                this._path = filePath;
+                this._headerParrern = headerPattern;
+            }
+            else if (isNew)
             {
                 this._path = filePath;
                 this._headerParrern = headerPattern;
             }
             else
             {
-                throw new FileNotFoundException("Не удалось найти файл по данному пути");
+                throw new FileNotFoundException("Не удалось открыть файл...");
             }
         }
 
@@ -55,6 +60,35 @@ namespace kdz.Model
                     record.SetFromStringList(values, CultureInfo.GetCultureInfo("en-US"));
                     yield return record;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Записывает список объектов типа T в CSV файл
+        /// </summary>
+        /// <typeparam name="T">Тип записываемых объектов</typeparam>
+        /// <param name="records">Список объектов для записи</param>
+        /// <returns>Результат операции</returns>
+        public bool TrySaveRecords<T>(List<T> records)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(this._path))
+                {
+                    if (this._headerParrern != null)
+                    {
+                        writer.WriteLine(this._headerParrern);
+                    }
+                    foreach (T item in records)
+                    {
+                        writer.WriteLine(item.ToString());
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

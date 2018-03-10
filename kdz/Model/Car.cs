@@ -16,6 +16,15 @@ namespace kdz.Model
         private CultureInfo cultureInfo;
 
         /// <summary>
+        /// Марка
+        /// </summary>
+        private string _mark;
+        /// <summary>
+        /// Свойство марки
+        /// </summary>
+        public string Mark { get => this._mark; set => this._mark = value; }
+
+        /// <summary>
         /// Модель автомобиля
         /// </summary>
         private string _model;
@@ -173,7 +182,8 @@ namespace kdz.Model
         /// </summary>
         public Car()
         {
-            this._model = "x";
+            this._mark = "mark";
+            this._model = "model";
             this._mpg = new CarAttribute<double>(0.1, 100.0);
             this._cyl = new CarAttribute<int>(1, 24);
             this._disp = new CarAttribute<double>(0.1, 1000.0);
@@ -195,7 +205,9 @@ namespace kdz.Model
         public void SetFromStringList(List<string> values, CultureInfo cultureInfo)
         {
             this.cultureInfo = cultureInfo;
-            this._model = values[0];
+            string[] markModel = values[0].Trim('"').Split(' ');
+            this._mark = markModel[0];
+            this._model = markModel.Length > 1 ? markModel[1] : "model";
             this._mpg.ConvertFromText(values[1]);
             this._cyl.ConvertFromText(values[2]);
             this._disp.ConvertFromText(values[3]);
@@ -209,11 +221,15 @@ namespace kdz.Model
             this._carb.ConvertFromText(values[11]);
         }
 
+        /// <summary>
+        /// Сздает текстовое представление объекта класса Car
+        /// </summary>
+        /// <returns>Стрка - представление объекта класса Car</returns>
         public override string ToString()
         {
-            string res = String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11}",
+            string res = String.Format("\"{12} {0}\", {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}",
                 Model, Mpg.ToString(), Cyl.ToString(), Disp.ToString(), Hp.ToString(), Drat.ToString(),
-                Wt.ToString(), Qsec.ToString(), Vs.ToString(), Am.ToString(), Gear.ToString(), Carb.ToString());
+                Wt.ToString(), Qsec.ToString(), Vs.ToString(), Am.ToString(), Gear.ToString(), Carb.ToString(), Mark);
             return res;
         }
     }
